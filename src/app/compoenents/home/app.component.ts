@@ -30,7 +30,7 @@ export class AppComponent implements OnInit{
   
   ngOnInit() {
     this.store.dispatch(loadTodos());
-    this.store.dispatch(updateTodo({payload: {id: 96, content : "uupdate value one"}}));
+    // this.store.dispatch(updateTodo({payload: {id: 96, content : "uupdate value one"}}));
     // this.service.updateTodo({id: 96, content : "uupdate value"}).subscribe(d => console.log(d));
     this.allTodos$.subscribe(data => console.log(data));
   }

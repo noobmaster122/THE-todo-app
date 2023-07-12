@@ -15,10 +15,12 @@ export class DummyBackendService {
       return this.http.get<Array<Todo>>(`${this.url}/todos`);
   }
   public addTodo(payload: Todo): Observable<any>{
-    console.log("am here");
     return this.http.post(`${this.url}/todos`, payload);
   }
   public updateTodo(payload: Todo): Observable<any>{
     return this.http.patch(`${this.url}/todos/${payload.id}`, payload);
+  }
+  public getRandomInt(max: number): number{
+    return Math.floor(Math.random() * max);
   }
 }

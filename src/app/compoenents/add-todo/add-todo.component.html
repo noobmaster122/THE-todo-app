@@ -1,0 +1,15 @@
+
+    <h1>User Registration</h1>
+
+    <form #login="ngForm" (ngSubmit)="onSubmit(login.form)">
+        <mat-form-field class="example-full-width">
+            <mat-label>add todo</mat-label>
+            <input matInput placeholder="take out trash..." name="todoContent" [(ngModel)]="formData.content">
+        </mat-form-field>
+        <br>
+<!--  -->
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+
+
+

@@ -1,0 +1,31 @@
+<div style="border: 1px solid red;
+            padding: 5px;
+            display: flex; 
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap:5px;">
+    <!--  -->
+    <ng-container *ngIf="showBlock; else hideBlock">
+        <p style="margin: 0;">{{ todo.content }}</p>
+        <button mat-fab (click)="onModifyTodo()" color="warn" aria-label="Example icon button with a heart icon">
+            <mat-icon>update</mat-icon>
+        </button>
+        <button mat-fab (click)="onDeletTodo()" color="warn" aria-label="Example icon button with a heart icon">
+            <mat-icon>close</mat-icon>
+        </button>
+    </ng-container>
+    <!--  -->
+    <ng-template #hideBlock>
+        <form #updateTodoForm="ngForm" (ngSubmit)="onUpdateTodoSubmit(updateTodoForm)">
+            <mat-form-field class="example-full-width">
+                <mat-label>Todo</mat-label>
+                <input matInput name="todoUpdatedContent" ngModel>
+            </mat-form-field>
+            <button mat-fab type="submit" color="warn" aria-label="Example icon button with a heart icon">
+                <mat-icon>done</mat-icon>
+            </button>
+        </form>
+    </ng-template>
+    <!--  -->
+</div>

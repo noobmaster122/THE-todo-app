@@ -1,1 +1,7 @@
-<h1>am here bitches</h1>
+<div>
+    <app-add-todo></app-add-todo>
+    <app-single-todo
+      *ngFor="let todo of (allTodos$ | async)?.todos"
+      [todo]="todo"
+    ></app-single-todo>
+</div>

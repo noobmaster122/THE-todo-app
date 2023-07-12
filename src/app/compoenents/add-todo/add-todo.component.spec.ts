@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashblardComponent } from './dashblard.component';
+import { AddTodoComponent } from './add-todo.component';
 
-describe('DashblardComponent', () => {
-  let component: DashblardComponent;
-  let fixture: ComponentFixture<DashblardComponent>;
+describe('AddTodoComponent', () => {
+  let component: AddTodoComponent;
+  let fixture: ComponentFixture<AddTodoComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DashblardComponent]
+      declarations: [AddTodoComponent]
     });
-    fixture = TestBed.createComponent(DashblardComponent);
+    fixture = TestBed.createComponent(AddTodoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

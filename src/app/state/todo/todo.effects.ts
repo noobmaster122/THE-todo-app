@@ -5,7 +5,7 @@ import { switchMap, map, catchError, withLatestFrom, mergeMap } from 'rxjs/opera
 import { Store } from '@ngrx/store';
 import { selectAllTodos } from './todo.selectors';
 import { AppState } from '../app.state';
-import { addTodo, loadTodoFailure, loadTodoSuccess, loadTodos, updateTodo } from './todo.actions';
+import { addTodo, deleteTodo, loadTodoFailure, loadTodoSuccess, loadTodos, updateTodo } from './todo.actions';
 import { DummyBackendService } from 'src/app/services/dummy-backend/dummy-backend.service';
 import { TodoState } from './todo.reducer';
 
@@ -59,6 +59,23 @@ export class TodoEffects {
       switchMap(({payload, type})=>
           // Call the getTodos method, convert it to an observable
           from(this.todoService.addTodo(payload))
+            .pipe(
+            // Take the returned value and return a new success action containing the todos
+            map(() => loadTodos()),
+            // Or... if it errors return a new failure action containing the error
+            catchError(err => of(loadTodoFailure({error: err.message})))
+          )
+        
+      )
+    )
+  );
+    // Run this code when a loadTodos action is dispatched
+    deleteTodo$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteTodo),
+      switchMap(({payload})=>
+          // Call the getTodos method, convert it to an observable
+          from(this.todoService.deleteTodo(payload))
             .pipe(
             // Take the returned value and return a new success action containing the todos
             map(() => loadTodos()),

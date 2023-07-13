@@ -20,6 +20,9 @@ export class DummyBackendService {
   public updateTodo(payload: Todo): Observable<any>{
     return this.http.patch(`${this.url}/todos/${payload.id}`, payload);
   }
+  public deleteTodo(payload: Todo): Observable<any>{
+    return this.http.delete(`${this.url}/todos/${payload.id}`);
+  }
   public getRandomInt(max: number): number{
     return Math.floor(Math.random() * max);
   }

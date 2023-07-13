@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { Todo } from "src/app/interfaces/todo.model";
-import { addTodo, loadTodoFailure, loadTodoSuccess, loadTodos, updateTodo } from "./todo.actions";
+import { addTodo, deleteTodo, loadTodoFailure, loadTodoSuccess, loadTodos, updateTodo } from "./todo.actions";
 
 export interface TodoState {
   todos: Array<Todo>;
@@ -39,13 +39,23 @@ export const todoReducer = createReducer(
     //updateTodo
     on(updateTodo, (state: TodoState, { payload }) => ({
       ...state,
-      todos: [...state.todos, payload],
+      todos: state.todos.map((obj) => {
+        if (obj.id === payload.id) {
+          return { ...obj, content: payload.content };
+        }
+        return obj;
+      }),
       status: 'success' as 'success',
     })),
     //add todo
     on(addTodo, (state: TodoState, { payload }) => ({
       ...state,
       todos: [...state.todos, payload],
+      status: 'success' as 'success',
+    })),
+    on(deleteTodo, (state: TodoState, { payload }) => ({
+      ...state,
+      todos: state.todos.filter((obj) => obj.id !== payload.id),
       status: 'success' as 'success',
     })),
 );

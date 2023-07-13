@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { DummyBackendService } from 'src/app/services/dummy-backend/dummy-backend.service';
 import { AppState } from 'src/app/state/app.state';
-import { updateTodo } from 'src/app/state/todo/todo.actions';
+import { deleteTodo, updateTodo } from 'src/app/state/todo/todo.actions';
 
 
 @Component({
@@ -23,6 +23,7 @@ export class SingleTodoComponent {
 
   protected onDeletTodo(){
     console.log("delete todo triggered");
+    this.store.dispatch(deleteTodo({payload: this.todo}));
   }
   protected onModifyTodo(){
     console.log("modify todo triggered");

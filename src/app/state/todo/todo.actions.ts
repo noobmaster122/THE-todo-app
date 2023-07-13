@@ -20,5 +20,9 @@ export const addTodo = createAction(
     '[Todo Page] add Todo',
     props<{payload: Todo}>()
 );
+export const deleteTodo = createAction(
+    '[Todo Page] delete Todo',
+    props<{payload: Todo}>()
+);
 
 

@@ -25,6 +25,5 @@ export class AddTodoComponent {
   protected onSubmit(data: any){
     const { value } = data;
     this.store.dispatch(addTodo({payload: {id: this.service.getRandomInt(1000), content: value.todoContent}}));
-    //this.service.addTodo({id: this.service.getRandomInt(1000), content: value.todoContent}).subscribe(d => console.log(d));
   }
 }

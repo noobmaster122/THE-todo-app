@@ -1,0 +1,13 @@
+.small-fab {
+    height: 45px !important;
+    width: 45px !important;
+    line-height: 45px !important;
+  }
+
+  ::ng-deep .mat-mdc-form-field-subscript-wrapper{
+    display: none !important;
+  }
+
+  .input-grow-width{
+    width: calc(100% - 50px);
+  }

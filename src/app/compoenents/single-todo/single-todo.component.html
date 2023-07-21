@@ -1,28 +1,27 @@
-<div style="border: 1px solid red;
-            padding: 5px;
-            display: flex; 
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            gap:5px;">
+<div 
+            class="flex justify-between align-middle bg-gray-200 rounded-md mb-2 p-1 h-[80px]">
     <!--  -->
-    <ng-container *ngIf="showBlock; else hideBlock">
-        <p style="margin: 0;">{{ todo.content }}</p>
-        <button mat-fab (click)="onModifyTodo()" color="warn" aria-label="Example icon button with a heart icon">
-            <mat-icon>update</mat-icon>
-        </button>
-        <button mat-fab (click)="onDeletTodo()" color="warn" aria-label="Example icon button with a heart icon">
-            <mat-icon>close</mat-icon>
-        </button>
+    <ng-container *ngIf="showBlock; else hideBlock" >
+        <div class="border flex items-center">
+            <p class=" m-0 " >{{ todo.content }}</p>
+        </div>
+        <div class=" flex items-center">
+            <button mat-fab class="small-fab mr-[1px]" (click)="onModifyTodo()" color="warn" aria-label="Example icon button with a heart icon">
+                <mat-icon >update</mat-icon>
+            </button>
+            <button mat-fab class="small-fab ml-[1px]" (click)="onDeletTodo()" color="warn" aria-label="Example icon button with a heart icon">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
     </ng-container>
     <!--  -->
     <ng-template #hideBlock>
-        <form #updateTodoForm="ngForm" (ngSubmit)="onUpdateTodoSubmit(updateTodoForm)">
-            <mat-form-field class="example-full-width">
+        <form #updateTodoForm="ngForm" class="flex justify-between items-center w-full" (ngSubmit)="onUpdateTodoSubmit(updateTodoForm)">
+            <mat-form-field class="border input-grow-width"  >
                 <mat-label>Todo</mat-label>
                 <input matInput name="todoUpdatedContent" ngModel>
             </mat-form-field>
-            <button mat-fab type="submit" color="warn" aria-label="Example icon button with a heart icon">
+            <button mat-fab class="small-fab" type="submit" color="warn" aria-label="Example icon button with a heart icon">
                 <mat-icon>done</mat-icon>
             </button>
         </form>

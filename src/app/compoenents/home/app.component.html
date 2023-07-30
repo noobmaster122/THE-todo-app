@@ -1,7 +1,6 @@
-<div class=" flex justify-center align-middle w-3/4 m-auto flex-col p-2 bg-gray-100 mt-4 rounded-md shadow-md">
-    <app-add-todo class="mb-4"></app-add-todo>
-    <app-single-todo
-      *ngFor="let todo of (allTodos$ | async)?.todos"
-      [todo]="todo"
-    ></app-single-todo>
-</div>
+<a href="/home">Home</a><br>
+  <a href="/login">Login</a>
+  <br>
+
+<router-outlet>
+</router-outlet>

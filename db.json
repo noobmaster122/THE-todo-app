@@ -1,10 +1,6 @@
 {
   "todos": [
     {
-      "id": 550,
-      "content": "fssfsd"
-    },
-    {
       "id": 0,
       "content": "gey there again"
     },
@@ -15,16 +11,21 @@
     {
       "id": 717,
       "content": "take out the trash"
-    }
-  ],
-  "comments": [
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 156,
+      "content": "fsfd"
+    },
+    {
+      "id": 827,
+      "content": "hello world"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "users": [
+    {
+      "id": 123,
+      "username": "ahmed",
+      "password": "pass"
+   }
+  ]
 }

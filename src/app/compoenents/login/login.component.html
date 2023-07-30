@@ -1,0 +1,15 @@
+<div class="p-2 flex items-center justify-center h-screen bg-gray-100">
+<form #updateTodoForm="ngForm" class="flex flex-col gap-2  max-w-md min-w-[300px]" (ngSubmit)="onSubmit(updateTodoForm)">
+    <mat-form-field class="border input-grow-width"  appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput name="userName" ngModel>
+    </mat-form-field>
+    <mat-form-field class="border input-grow-width"  appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput name="password" ngModel>
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary" aria-label="Example icon button with a heart icon">
+        LOGIN
+    </button>
+</form>
+</div>

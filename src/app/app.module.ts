@@ -16,19 +16,44 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { SingleTodoComponent } from './compoenents/single-todo/single-todo.component';
 import {MatIconModule} from '@angular/material/icon';
+import { LoginComponent } from './compoenents/login/login.component';
+//router
+import { Routes, RouterModule } from '@angular/router';
+import { LandingPageComponent } from './compoenents/landing-page/landing-page.component';
+//security guards
+import {AuthGuard} from "./services/security/security-guard";
+import { loginReducer } from './state/login/login.reducer';
+//
+//import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import * as localForage  from 'localforage';
+
+
+const routes: Routes = [
+  {path:'', component: AppComponent},
+  {path:'login', component: LoginComponent},
+  {path:'home', component: LandingPageComponent, canActivate: [AuthGuard]}
+
+]
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTodoComponent,
-    SingleTodoComponent
+    SingleTodoComponent,
+    LoginComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
     //StoreModule.forRoot({}, {})
-    StoreModule.forRoot({ todos: todoReducer }),
+    StoreModule.forRoot({ todos: todoReducer, user: loginReducer }),
+    
+    // StoreModule.forRootWithDevtools({
+    //   maxAge: 25, // Retains last 25 states
+    //   logOnly: false, // Restrict extension to log-only mode
+    // }, localForage),
     EffectsModule.forRoot([TodoEffects]),
     HttpClientModule,
     //forms module
@@ -37,7 +62,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    //router
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

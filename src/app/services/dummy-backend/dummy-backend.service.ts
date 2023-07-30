@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Todo } from '../../interfaces/todo.model';
+import { Todo, User } from '../../interfaces/todo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +26,13 @@ export class DummyBackendService {
   public getRandomInt(max: number): number{
     return Math.floor(Math.random() * max);
   }
+  public loginUser(user: User): Observable<any>{
+    console.log("am in login");
+    return this.http.get<User>(`${this.url}/users/${user.uid}`);
+  }
+}
+
+export function isUserAllowedAccess(): boolean{
+  //this.router.navigate(['/login']);
+  return false;
 }

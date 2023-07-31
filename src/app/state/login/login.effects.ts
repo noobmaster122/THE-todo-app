@@ -17,20 +17,20 @@ export class TodoEffects {
   ) {}
 
   // Run this code when a loadTodos action is dispatched
-  // connectUser$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(connectUser),
-  //     // tap(action => console.log('am in login effects ', action)),
-  //     switchMap(({payload})=>
-  //       // Call the getTodos method, convert it to an observable
-  //       from(this.todoService.loginUser(payload))
-  //         .pipe(
-  //         // Take the returned value and return a new success action containing the todos
-  //         map((user) => connectUserSuccess({payload: user})),
-  //         // Or... if it errors return a new failure action containing the error
-  //         catchError(err => of(connectUserFailed({error: "connection failed"})))
-  //       )
-  //     )
-  //   )
-  // );
+  connectUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(connectUser),
+      // tap(action => console.log('am in login effects ', action)),
+      switchMap(({payload})=>
+        // Call the getTodos method, convert it to an observable
+        from(this.todoService.loginUser(payload))
+          .pipe(
+          // Take the returned value and return a new success action containing the todos
+          map((user) => connectUserSuccess({payload: user})),
+          // Or... if it errors return a new failure action containing the error
+          catchError(err => of(connectUserFailed({error: "connection failed"})))
+        )
+      )
+    )
+  );
 }

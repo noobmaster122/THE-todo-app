@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './compoenents/home/app.component';
-import { StoreModule } from '@ngrx/store';
+import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { todoReducer } from './state/todo/todo.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { TodoEffects } from './state/todo/todo.effects';
@@ -27,7 +27,18 @@ import { loginReducer } from './state/login/login.reducer';
 //import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import * as localForage  from 'localforage';
+import { metaReducers } from './state/metareducers/storage.metareducer';
 
+// export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
+//   return function(state, action) {
+//     console.log('state', state);
+//     console.log('action', action);
+ 
+//     return reducer(state, action);
+//   };
+// }
+ 
+// export const metaReducers: MetaReducer<any>[] = [debug];
 
 const routes: Routes = [
   {path:'', component: AppComponent},
@@ -48,12 +59,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     //StoreModule.forRoot({}, {})
-    StoreModule.forRoot({ todos: todoReducer, user: loginReducer }),
-    
-    // StoreModule.forRootWithDevtools({
-    //   maxAge: 25, // Retains last 25 states
-    //   logOnly: false, // Restrict extension to log-only mode
-    // }, localForage),
+    StoreModule.forRoot({ todos: todoReducer, user: loginReducer }, {metaReducers: metaReducers}),
     EffectsModule.forRoot([TodoEffects]),
     HttpClientModule,
     //forms module

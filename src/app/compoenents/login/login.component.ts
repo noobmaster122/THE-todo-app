@@ -6,7 +6,7 @@ import { DummyBackendService } from 'src/app/services/dummy-backend/dummy-backen
 import { AppState } from 'src/app/state/app.state';
 import { connectUser, loadUser } from 'src/app/state/login/login.actions';
 import { UserState } from 'src/app/state/login/login.reducer';
-import {selectConnectedUser, selectUserState} from 'src/app/state/login/login.selectors';
+import { selectUserState} from 'src/app/state/login/login.selectors';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +27,6 @@ export class LoginComponent {
    protected onSubmit(form: NgForm){
     const {value} = form;
     this.store.dispatch(connectUser({payload: {uid: 123, username: "ahmed", password: "pass"}}));
-    this.userData$.subscribe(d => console.log("am user data", d));
+    //this.userData$.subscribe(d => console.log("am user data", d));
   }
 }

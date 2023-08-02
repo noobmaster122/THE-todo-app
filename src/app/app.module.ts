@@ -27,7 +27,7 @@ import { loginReducer } from './state/login/login.reducer';
 //import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import * as localForage  from 'localforage';
-import { metaReducers } from './state/metareducers/storage.metareducer';
+import { storageMetaReducer } from './state/metareducers/storage.metareducer';
 
 // export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
 //   return function(state, action) {
@@ -59,7 +59,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     //StoreModule.forRoot({}, {})
-    StoreModule.forRoot({ todos: todoReducer, user: loginReducer }, {metaReducers: metaReducers}),
+    StoreModule.forRoot({ todos: todoReducer, user: loginReducer }, {metaReducers: [storageMetaReducer]}),
     EffectsModule.forRoot([TodoEffects]),
     HttpClientModule,
     //forms module
